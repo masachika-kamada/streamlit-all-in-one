@@ -1,4 +1,5 @@
 import streamlit as st
+import pdf2imageDL
 
 
 def sidebar():
@@ -16,7 +17,7 @@ def main():
     func = sidebar()
 
     if func == "PDFを画像に変換":
-        pass
+        pdf2imageDL.run()
     elif func == "画像をリサイズ":
         pass
     elif func == "画像サイズの表示":
