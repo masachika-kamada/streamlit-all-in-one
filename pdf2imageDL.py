@@ -35,6 +35,8 @@ def run():
             st.image(images[0], width=width)
 
         else:
+            isall = st.checkbox(label="全選択")
+            checkbox = []
             yoko = 3
             for y in range(-(-len(images) // yoko)):
                 cols = st.columns(yoko)
@@ -44,4 +46,6 @@ def run():
                         break
                     with cols[x]:
                         st.image(images[idx])
-                        st.checkbox(f"ページ{idx + 1}", value=True)
+                        checkbox.append(st.checkbox(f"ページ{idx + 1}", value=isall))
+
+            print(checkbox)
