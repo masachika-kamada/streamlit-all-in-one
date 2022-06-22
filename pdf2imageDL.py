@@ -14,25 +14,31 @@ import pdf2image
 
 
 def run():
-    file = st.file_uploader("翻訳したいpdfファイルをアップロードしてください", type=['pdf'])
+    file = st.file_uploader("翻訳したいpdfファイルをアップロードしてください", type=["pdf"])
     file_path = "./src.pdf"
     if file is not None:
         with open(file_path, "wb") as f:
             f.write(file.getvalue())
 
-        run = st.button("画像をダウンロード")
-
         images = pdf2image.convert_from_path(
             file_path,
             poppler_path="C:/poppler-22.01.0/Library/bin",
             dpi=200,
-            fmt='jpg')
+            fmt="jpg")
 
         if len(images) == 1:
-            w, h = images[0].size
+            image = images[0]
+            w, h = image.size
             target_height = 450
             width = int(target_height / h * w)
-            st.image(images[0], width=width)
+            st.image(image, width=width)
+            image.save("dst.png")
+
+            st.download_button(
+                "ダウンロード",
+                open("dst.png", "br"),
+                file.name.replace("pdf", "jpg")
+            )
 
         else:
             isall = st.checkbox(label="全選択")
