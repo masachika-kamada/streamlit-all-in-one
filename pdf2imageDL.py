@@ -1,5 +1,7 @@
 import streamlit as st
 import pdf2image
+import os
+import shutil
 
 
 """
@@ -26,23 +28,29 @@ def run():
             dpi=200,
             fmt="jpg")
 
+        checkbox = []
+
         if len(images) == 1:
             image = images[0]
             w, h = image.size
             target_height = 450
             width = int(target_height / h * w)
             st.image(image, width=width)
-            image.save("dst.png")
+            image.save("dst.jpg")
 
             st.download_button(
                 "ダウンロード",
-                open("dst.png", "br"),
+                open("dst.jpg", "br"),
                 file.name.replace("pdf", "jpg")
             )
 
         else:
-            isall = st.checkbox(label="全選択")
-            checkbox = []
+            cols_head = st.columns(3)
+            with cols_head[0]:
+                isall = st.checkbox(label="全選択")
+            with cols_head[1]:
+                make_output_file = st.button("選択確定")
+
             yoko = 3
             for y in range(-(-len(images) // yoko)):
                 cols = st.columns(yoko)
@@ -55,3 +63,24 @@ def run():
                         checkbox.append(st.checkbox(f"ページ{idx + 1}", value=isall))
 
             print(checkbox)
+            if make_output_file is True and True in checkbox:
+                idx = [i for i, x in enumerate(checkbox) if x is True]
+                print(idx)
+                with cols_head[2]:
+                    if len(idx) == 1:
+                        images[idx[0]].save("dst.jpg")
+                        st.download_button(
+                            "ダウンロード",
+                            open("dst.jpg", "br"),
+                            file.name.replace("pdf", "jpg")
+                        )
+                    else:
+                        os.makedirs("out", exist_ok=True)
+                        for i in idx:
+                            images[i].save(f"out/page{i + 1}.jpg")
+                        shutil.make_archive("out", format="zip", root_dir="out")
+                        st.download_button(
+                            "ダウンロード",
+                            open("out.zip", "br"),
+                            file.name.replace("pdf", "zip")
+                        )
