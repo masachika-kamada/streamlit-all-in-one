@@ -35,8 +35,13 @@ def run():
             st.image(images[0], width=width)
 
         else:
-            cols = st.columns(len(images))
-            for i in range(len(images)):
-                with cols[i]:
-                    st.image(images[i])
-                    st.checkbox(f"ページ{i + 1}", value=True)
+            yoko = 3
+            for y in range(-(-len(images) // yoko)):
+                cols = st.columns(yoko)
+                for x in range(yoko):
+                    idx = y * yoko + x
+                    if idx >= len(images):
+                        break
+                    with cols[x]:
+                        st.image(images[idx])
+                        st.checkbox(f"ページ{idx + 1}", value=True)
