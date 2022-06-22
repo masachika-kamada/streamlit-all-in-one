@@ -17,17 +17,26 @@ def run():
     file = st.file_uploader("翻訳したいpdfファイルをアップロードしてください", type=['pdf'])
     file_path = "./src.pdf"
     if file is not None:
-        st.write(f"{file.name} をアップロードしました")
         with open(file_path, "wb") as f:
             f.write(file.getvalue())
-        run = st.button("PDFを画像に変換")
-    else:
-        run = False
 
-    if run:
+        run = st.button("画像をダウンロード")
+
         images = pdf2image.convert_from_path(
             file_path,
             poppler_path="C:/poppler-22.01.0/Library/bin",
             dpi=200,
             fmt='jpg')
-        st.image(images[0], width=500)
+
+        if len(images) == 1:
+            w, h = images[0].size
+            target_height = 450
+            width = int(target_height / h * w)
+            st.image(images[0], width=width)
+
+        else:
+            cols = st.columns(len(images))
+            for i in range(len(images)):
+                with cols[i]:
+                    st.image(images[i])
+                    st.checkbox(f"ページ{i + 1}", value=True)
