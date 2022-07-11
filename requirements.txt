@@ -1,2 +1,2 @@
-import pdf2image
-import PyPDF2
+pdf2image
+PyPDF2
