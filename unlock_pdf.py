@@ -15,9 +15,9 @@ import PyPDF2
 
 
 def run():
-    file = st.file_uploader("翻訳したいpdfファイルをアップロードしてください", type=["pdf"])
+    file = st.file_uploader("pdfファイルをアップロードしてください", type=["pdf"])
     file_path = "./src.pdf"
-    password = "MSFT2022"
+    password = ""
     if file is not None:
         with open(file_path, "wb") as f:
             f.write(file.getvalue())

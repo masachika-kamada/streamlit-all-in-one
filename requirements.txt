@@ -1,0 +1,2 @@
+import pdf2image
+import PyPDF2

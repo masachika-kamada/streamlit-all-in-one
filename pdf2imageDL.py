@@ -16,7 +16,7 @@ import shutil
 
 
 def run():
-    file = st.file_uploader("翻訳したいpdfファイルをアップロードしてください", type=["pdf"])
+    file = st.file_uploader("pdfファイルをアップロードしてください", type=["pdf"])
     file_path = "./src.pdf"
     if file is not None:
         with open(file_path, "wb") as f:
@@ -24,7 +24,7 @@ def run():
 
         images = pdf2image.convert_from_path(
             file_path,
-            poppler_path="C:/poppler-22.01.0/Library/bin",
+            poppler_path="./poppler-bin",
             dpi=200,
             fmt="jpg")
 
