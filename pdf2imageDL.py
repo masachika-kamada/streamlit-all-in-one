@@ -24,7 +24,6 @@ def run():
 
         images = pdf2image.convert_from_path(
             file_path,
-            poppler_path="./poppler-bin",
             dpi=200,
             fmt="jpg")
 
