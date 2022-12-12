@@ -1,6 +1,6 @@
 import streamlit as st
-import pdf_to_image_downloader
-import video_to_audio_downloader
+from functions import pdf_to_image_downloader
+from functions import video_to_audio_downloader
 # import unlock_pdf
 
 
