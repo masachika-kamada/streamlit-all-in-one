@@ -1,11 +1,6 @@
 import streamlit as st
 import ffmpeg
 
-mp4_path = "D:/music/tomorrow moroha.mp4"
-stream = ffmpeg.input(mp4_path)
-stream = ffmpeg.output(stream, "test.mp3")
-ffmpeg.run(stream)
-
 
 """
 機能要求
@@ -16,18 +11,18 @@ ffmpeg.run(stream)
 
 
 def run():
-    file = st.file_uploader("pdfファイルをアップロードしてください", type=["mp4"])
+    file = st.file_uploader("mp4ファイルをアップロードしてください", type=["mp4"])
     file_path = "./src.mp4"
     if file is not None:
         with open(file_path, "wb") as f:
             f.write(file.getvalue())
 
-        stream = ffmpeg.input(mp4_path)
-        stream = ffmpeg.output(stream, "test.mp3")
+        stream = ffmpeg.input(file_path)
+        stream = ffmpeg.output(stream, "dst.mp3")
         ffmpeg.run(stream)
 
         st.download_button(
             "ダウンロード",
-            open("dst.jpg", "br"),
-            file.name.replace("pdf", "jpg")
+            open("dst.mp3", "br"),
+            file.name.replace("mp4", "mp3")
         )

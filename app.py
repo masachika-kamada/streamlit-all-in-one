@@ -1,5 +1,6 @@
 import streamlit as st
-import pdf2imageDL
+import pdf_to_image_downloader
+import video_to_audio_downloader
 # import unlock_pdf
 
 
@@ -8,7 +9,7 @@ def sidebar():
         func_select = st.radio(
             "機能切替",
             ("PDFを画像に変換",
-             "動画から音声を抽出"
+             "動画を音声に変換",
              # "PDFのパスワード解除",
              "画像をリサイズ",
              "画像サイズの表示")
@@ -22,7 +23,9 @@ def main():
     func = sidebar()
 
     if func == "PDFを画像に変換":
-        pdf2imageDL.run()
+        pdf_to_image_downloader.run()
+    elif func == "動画を音声に変換":
+        video_to_audio_downloader.run()
     elif func == "画像をリサイズ":
         pass
     # elif func == "PDFのパスワード解除":
