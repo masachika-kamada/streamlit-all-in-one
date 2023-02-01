@@ -2,6 +2,7 @@ import streamlit as st
 from functions import pdf_to_image_downloader
 from functions import video_to_audio_downloader
 from functions import password_maker
+from functions import qrcode_maker
 # import unlock_pdf
 
 
@@ -13,6 +14,7 @@ def sidebar():
              "動画を音声に変換",
              # "PDFのパスワード解除",
              "パスワード生成",
+             "QRコード生成",
              "トリミング・余白追加",  # 正方形ロゴ作成
              "画像をリサイズ",
              "画像サイズの表示")
@@ -22,7 +24,7 @@ def sidebar():
 
 
 def main():
-    st.markdown('# Image Process all in one')
+    st.markdown("# Image Process all in one")
     func = sidebar()
 
     if func == "PDFを画像に変換":
@@ -31,6 +33,8 @@ def main():
         video_to_audio_downloader.run()
     elif func == "パスワード生成":
         password_maker.run()
+    elif func == "QRコード生成":
+        qrcode_maker.run()
     elif func == "画像をリサイズ":
         pass
     # elif func == "PDFのパスワード解除":
@@ -39,5 +43,5 @@ def main():
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

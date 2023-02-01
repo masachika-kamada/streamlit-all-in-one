@@ -2,3 +2,5 @@ streamlit
 pdf2image
 PyPDF2
 ffmpeg-python
+pyqrcode
+pypng
