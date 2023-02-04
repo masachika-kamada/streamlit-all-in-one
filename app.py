@@ -4,6 +4,7 @@ from functions import video_to_audio_downloader
 from functions import password_maker
 from functions import qrcode_maker
 from functions import color_palette
+from functions import youtube_download
 # import unlock_pdf
 
 
@@ -17,6 +18,7 @@ def sidebar():
              "パスワード生成",
              "QRコード生成",
              "カラーパレット",
+             "YouTubeダウンロード",
              "トリミング・余白追加",  # 正方形ロゴ作成
              "画像をリサイズ",
              "画像サイズの表示")
@@ -39,6 +41,8 @@ def main():
         qrcode_maker.run()
     elif func == "カラーパレット":
         color_palette.run()
+    elif func == "YouTubeダウンロード":
+        youtube_download.run()
     elif func == "画像をリサイズ":
         pass
     # elif func == "PDFのパスワード解除":
