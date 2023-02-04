@@ -15,5 +15,5 @@ def run():
 
     st.markdown(f"## RGB: {r}, {g}, {b}")
 
-    color = np.full((300, 800, 3), (b, g, r), dtype=np.uint8)
+    color = np.full((300, 800, 3), (r, g, b), dtype=np.uint8)
     st.image(color)
