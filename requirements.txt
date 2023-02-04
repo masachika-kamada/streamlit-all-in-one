@@ -4,3 +4,4 @@ PyPDF2
 ffmpeg-python
 pyqrcode
 pypng
+yt-dlp
