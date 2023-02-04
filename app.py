@@ -3,6 +3,7 @@ from functions import pdf_to_image_downloader
 from functions import video_to_audio_downloader
 from functions import password_maker
 from functions import qrcode_maker
+from functions import color_palette
 # import unlock_pdf
 
 
@@ -15,6 +16,7 @@ def sidebar():
              # "PDFのパスワード解除",
              "パスワード生成",
              "QRコード生成",
+             "カラーパレット",
              "トリミング・余白追加",  # 正方形ロゴ作成
              "画像をリサイズ",
              "画像サイズの表示")
@@ -35,6 +37,8 @@ def main():
         password_maker.run()
     elif func == "QRコード生成":
         qrcode_maker.run()
+    elif func == "カラーパレット":
+        color_palette.run()
     elif func == "画像をリサイズ":
         pass
     # elif func == "PDFのパスワード解除":
