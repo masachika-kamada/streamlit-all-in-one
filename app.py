@@ -5,6 +5,7 @@ from functions import password_maker
 from functions import qrcode_maker
 from functions import color_palette
 from functions import youtube_download
+from functions import resize_image
 # import unlock_pdf
 
 
@@ -44,7 +45,7 @@ def main():
     elif func == "YouTubeダウンロード":
         youtube_download.run()
     elif func == "画像をリサイズ":
-        pass
+        resize_image.run()
     # elif func == "PDFのパスワード解除":
     #     unlock_pdf.run()
     elif func == "画像サイズの表示":
