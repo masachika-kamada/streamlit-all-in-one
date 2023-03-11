@@ -6,6 +6,7 @@ from functions import qrcode_maker
 from functions import color_palette
 from functions import youtube_download
 from functions import resize_image
+from functions import remove_background
 # import unlock_pdf
 
 
@@ -20,6 +21,7 @@ def sidebar():
              "QRコード生成",
              "カラーパレット",
              "YouTubeダウンロード",
+             "画像の背景削除",
              "トリミング・余白追加",  # 正方形ロゴ作成
              "画像をリサイズ",
              "画像サイズの表示")
@@ -32,24 +34,27 @@ def main():
     st.markdown("# Image Process all in one")
     func = sidebar()
 
-    if func == "PDFを画像に変換":
-        pdf_to_image_downloader.run()
-    elif func == "動画を音声に変換":
-        video_to_audio_downloader.run()
-    elif func == "パスワード生成":
-        password_maker.run()
-    elif func == "QRコード生成":
-        qrcode_maker.run()
-    elif func == "カラーパレット":
-        color_palette.run()
-    elif func == "YouTubeダウンロード":
-        youtube_download.run()
-    elif func == "画像をリサイズ":
-        resize_image.run()
-    # elif func == "PDFのパスワード解除":
-    #     unlock_pdf.run()
-    elif func == "画像サイズの表示":
-        pass
+    match func:
+        case "PDFを画像に変換":
+            pdf_to_image_downloader.run()
+        case "動画を音声に変換":
+            video_to_audio_downloader.run()
+        case "パスワード生成":
+            password_maker.run()
+        case "QRコード生成":
+            qrcode_maker.run()
+        case "カラーパレット":
+            color_palette.run()
+        case "YouTubeダウンロード":
+            youtube_download.run()
+        case "画像の背景削除":
+            remove_background.run()
+        case "画像をリサイズ":
+            resize_image.run()
+        # case "PDFのパスワード解除":
+        #     unlock_pdf.run()
+        case "画像サイズの表示":
+            pass
 
 
 if __name__ == "__main__":
