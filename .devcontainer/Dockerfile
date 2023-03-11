@@ -5,4 +5,6 @@ RUN apt-get update && \
         poppler-utils \
         ffmpeg
 
+EXPOSE 8501
+
 ENV TZ Asia/Tokyo 
